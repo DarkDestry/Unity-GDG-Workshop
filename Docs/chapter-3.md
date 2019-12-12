@@ -8,7 +8,7 @@ To start, you need a player ship in the game scene. Navigate to the `Sprites/Shi
 
 To move it the player around in the scene view, you can use the red and green arrow gizmos. You can also move it on both axis by dragging the square between the two arrows.
 
-![Player Ship in Scene View](https://github.com/DarkDestry/Unity-GDG-Workshop/blob/master/Docs/Images/Chapter%202/ShipInScene.png?raw=true)
+![Player Ship in Scene View](https://github.com/DarkDestry/Unity-GDG-Workshop/blob/master/Docs/Images/Chapter%203/ShipInScene.png?raw=true)
 
 Rename your game object to Player so that we can identify it easily later. You can do that via `Right Click > Rename` or select the object in the hierarchy and rename it at the first line of the inspector window
 
@@ -18,7 +18,7 @@ The player ship will require several components to work correctly. It will need 
 
 To add these components, simply select the game object in the hierarchy, under the inspector window, scroll to the very bottom and select `Add Component`. Search for the two items `Rigidbody 2D` and `Box Collider`.
 
-![Adding Components](https://github.com/DarkDestry/Unity-GDG-Workshop/blob/master/Docs/Images/Chapter%202/AddComponents.png?raw=true)
+![Adding Components](https://github.com/DarkDestry/Unity-GDG-Workshop/blob/master/Docs/Images/Chapter%203/AddComponents.png?raw=true)
 
 > There is no particular reason we used the box collider to approximate the player's collider. If you want, you can select the Circle Collider or the Polygon Collider to approximate the player collider.
 
