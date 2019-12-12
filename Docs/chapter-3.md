@@ -18,7 +18,7 @@ The player ship will require several components to work correctly. It will need 
 
 To add these components, simply select the game object in the hierarchy, under the inspector window, scroll to the very bottom and select `Add Component`. Search for the two items `Rigidbody 2D` and `Box Collider`.
 
-![Adding Components](https://github.com/DarkDestry/Unity-GDG-Workshop/blob/master/Docs/Images/Chapter%203/AddComponents.png?raw=true)
+![Adding Components](https://github.com/DarkDestry/Unity-GDG-Workshop/blob/master/Docs/Images/Chapter%203/AddComponent.png?raw=true)
 
 > There is no particular reason we used the box collider to approximate the player's collider. If you want, you can select the Circle Collider or the Polygon Collider to approximate the player collider.
 
