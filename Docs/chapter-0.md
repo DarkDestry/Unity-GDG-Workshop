@@ -17,7 +17,9 @@ You can download the latest version. For consistency sake, this workshop will be
 
 ![Unity Hub Version selection](https://github.com/DarkDestry/Unity-GDG-Workshop/blob/master/Docs/Images/Chapter%201/UnityHubInstallVersion.png?raw=true)
 
-The following tab should have all the appropriate settings already selected for you. For the scripting component of this tutorial, it is recommended to have Visual Studio installed. However, it can also be done on any text editor such as VS Code, Notepad++ or even Notepad itself.
+The following tab should have all the appropriate settings already selected for you. For the scripting component of this tutorial, it is recommended to have Visual Studio installed. However, it can also be done on any text editor such as VS Code, Notepad++ or even Notepad.
+
+Make sure you select the appropriate build target for your operating system.
 
 ![Unity Hub Component selection](https://github.com/DarkDestry/Unity-GDG-Workshop/blob/master/Docs/Images/Chapter%201/UnityHubInstallComponents.png?raw=true)
 
