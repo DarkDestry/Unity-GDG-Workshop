@@ -144,3 +144,30 @@ The second parameter is a 2 component vector that specifies the amount of offset
 For the y component of the offset vector, we will use `Time.time` to drive the offset amount. `Time.Time` will be updated by Unity every frame, and will increase over time.
 
 Run the game and the background should start scrolling. If not, check the `ScrollSpeed` property in the `BackgroundScroller` component (in the inspector window, not in code. Inspector settings will overwrite the value in code).
+
+The final code should look something like this:
+```csharp
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class BackgroundScroller : MonoBehaviour
+{
+    public float m_ScrollSpeed = 1;
+
+    private SpriteRenderer m_SpriteRenderer;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        m_SpriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        m_SpriteRenderer.material.SetTextureOffset("_MainTex", new Vector2(0, Time.time * m_ScrollSpeed));
+    }
+}
+
+```
