@@ -1,6 +1,6 @@
 # Chapter 0 - Installing Unity
 
-Welcome to the NUSGDG Unity workshop. In this chapter you will setup your project.
+Welcome to the NUSGDG Unity workshop. In this chapter you will be installing unity.
 
 ## Downloading Unity
 
