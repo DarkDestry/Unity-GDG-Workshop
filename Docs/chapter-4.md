@@ -18,8 +18,6 @@ Select the bullet in the hierarchy, scroll to the bottom of the inspector and se
 
 ![Bullet Inspector](https://github.com/DarkDestry/Unity-GDG-Workshop/blob/master/Docs/Images/Chapter%204/BulletInspector.png?raw=true)
 
-Remember to set your gravity scale to 0 on your rigidbody to disable gravity for the object.
-
 ## Adding constraints
 
 At this point you can press play in the editor and try interacting with the bullet with your ship. You may notice some perculiar behaviour with both your ship and the bullet
@@ -85,7 +83,132 @@ void Start()
 ```
 
 
+// ------------------------- DATASETUP: ADD GIF OF ONE BULLET MOVING ----------------------------//
 
 
 
-// ------------------------- DATASETUP: ADD GIF OF BULLET MOVING ----------------------------//
+We will come back to the bullet script after we setup enemies for the bullet to interact with. For now, we will make it such that our player can fire the bullets.
+
+
+In the player script, create a new function `HandleWeapons()`. We will also call this function in `Update()`. We will also create a public member for us to assign the bullet prefab in the inspector.
+
+```csharp
+
+public class Player : MonoBehaviour
+{
+    ...
+    public GameObject m_BulletPrefab;
+    ...
+
+    void Update()
+    {
+        HandleMovement();
+        HandleWeapons();
+    }
+
+    ...
+
+    void HandleWeapons()
+    {
+        if (m_BulletPrefab == null)
+            return;
+
+    }
+}
+```
+
+Back in Unity, drag the bullet prefab into the newly created `Bullet Prefab` field in the player component.
+
+// ----------- DATASETUP: ADD OF IMAGE OF ASSIGNING BULLET PREFAB ON PLAYER COMPONENT ---------------- //
+
+Just like how we used the "Horizontal" and "Vertical" input axis to move the player, there is a similar "Fire1" input axis that is mapped to common "fire" buttons. We will use this to check if we should spawn bullets.
+
+
+```csharp
+void HandleWeapons()
+{
+    if (m_BulletPrefab == null)
+        return;
+
+    if (Input.GetAxis("Fire1") > 0)
+    {
+        Instantiate(m_BulletPrefab, transform.position, Quaternion.identity);
+    }
+}
+
+```
+
+The `Instantiate()` function will spawn/create the input gameobject at a target position and rotation. We wil spawn the bullet at the player position and give it no rotation (identity rotation).
+
+> Rotations in Unity are described by Quaternions. Quaternions are a slightly more advanced mathematical concept that we will not be covering here. For more information on Quaternions, see https://docs.unity3d.com/Manual/QuaternionAndEulerRotationsInUnity.html
+
+There are no reason for us to only spawn one bullet in `HandleWeapons()` when the input key is pressed. You are free to spawn more at any location you like. We like to fire two bullets side by side so we spawned two instead.
+
+```csharp
+Instantiate(m_BulletPrefab, transform.position + new Vector2(-0.27f, 0.0f), Quaternion.identity);
+Instantiate(m_BulletPrefab, transform.position + new Vector2(0.27f, 0.0f), Quaternion.identity);
+```
+
+If we run the game and press `left ctrl` on the keyboard, our player should now be rapid firing bullets. `left ctrl` is mapped to the `Fire1` axis by default.
+
+
+
+
+
+
+
+// ----------- DATASETUP: ADD GIF OF RAPID FIRE BULLETS ---------------- //
+
+
+
+
+
+
+
+
+We want to be able to control the speed at which bullets fire. At the moment, firing speed is dependent on the frequency of which `Update` is called. This means that the firing speed is framerate dependent - less bullets will fire on a slow computer than on a fast one. We want to be able to control the time between firing each bullet.
+
+Create a property `m_TimeBetweenShots` to control the time between each shot, and a private member for us to keep track of the time when the bullet was last fired.
+
+```csharp
+public class Player : MonoBehaviour
+{
+    ...
+    public float m_TimeBetweenShots = 0.2f;
+    private float m_TimeOfLastShot = 0;
+    ```
+}
+
+```
+
+In the `HandleWeapons()` function, we will check if it has been long enough since the last time we fired a shot, and only fire when the time since last shot is greater than `m_TimeBetweenShots`.
+
+```csharp
+void HandleWeapons()
+{
+    if (m_BulletPrefab == null)
+        return;
+
+    if (Input.GetAxis("Fire1") > 0)
+    {
+        float timeSinceLastShot = Time.time - m_TimeOfLastShot;
+        if (timeSinceLastShot > m_TimeBetweenShots)
+        {
+            Instantiate(m_BulletPrefab, transform.position + new Vector2(-0.27f, 0.0f), Quaternion.identity);
+            Instantiate(m_BulletPrefab, transform.position + new Vector2(0.27f, 0.0f), Quaternion.identity);
+            m_TimeOfLastShot = Time.time;
+        }
+    }
+}
+
+```
+
+Our bullets should now be firing only every `m_TimeBetweenShots` seconds.
+
+
+
+
+// ----------- DATASETUP: ADD GIF OF BULLETS FIRING CORRECTLY ---------------- //
+
+
+
