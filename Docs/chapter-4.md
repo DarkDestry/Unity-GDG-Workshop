@@ -56,6 +56,16 @@ To make project directory neat, we shall create a new folder called `Prefabs` in
 
 ![Bullet Prefab](https://github.com/DarkDestry/Unity-GDG-Workshop/blob/master/Docs/Images/Chapter%204/BulletPrefab.png?raw=true)
 
+The object in the hierarchy should have a blue name instead of black after creating the prefab to indicate it is a prefab-ed object.
+
+## Modifying a prefab
+
+If any change was made to the game object after adding creating the prefab, the changes are not applied to the prefab itself. This is to allow you to create multiple different versions of the same bullet.
+
+In the event that you want to apply the changes to the prefab itself, select the object in the hierarchy, on the first row of the inspector window, select override and apply all. That should apply the new settings on the current object onto its linked prefab.
+
+![Prefab Override](https://github.com/DarkDestry/Unity-GDG-Workshop/blob/master/Docs/Images/Chapter%204/PrefabOverride.png?raw=true)
+
 ## Scripting the Bullet
 
 Navigate back to the scripts folder that you created and create a new script called `Bullet`. This will contain the code that move the bullet and destroy the bullet when it hits something.
