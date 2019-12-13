@@ -20,6 +20,8 @@ Like the player and bullet, this asteroid will requre physics simulation and a c
 
 Select the bullet in the hierarchy, scroll to the bottom of the inspector and select `Add Component`. Add the `Rigidbody 2D` and `Circle Collider` component.
 
+Change the gravity scale of the rigidbody to 0 to disable gravity.
+
 ## Setting Triggers
 
 Similar to the bullet and player, the asteroid need to trigger an event when the bullet or the player collide with it. Select the `Circle Collider` and set its `Is Trigger` property to true. 
@@ -39,6 +41,8 @@ To achieve this, we will use tags to tag our objects. Select the asteroid in you
 You should be brought to the `Tags & Layers` inspector window. Under Tags, click the + icon on the bottom right and add the `Enemies` tag. We will not need a player tag as there is a built in player tag provided by Unity.
 
 ![Enemies Tag](https://github.com/DarkDestry/Unity-GDG-Workshop/blob/master/Docs/Images/Chapter%205/EnemiesTag.png?raw=true)
+
+Select your asteroid and Tag it as an enemy. Dont forget to apply the prefab changes via the override menu after you changed the tag.
 
 ## Scripting the Asteroid
 

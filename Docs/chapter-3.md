@@ -97,16 +97,7 @@ void HandleMovement()
 
 The function `Rigidbody.MovePosition()` will move the player to the newly calculated position. The player will now be able to move in play mode.
 
-
-
-
-
-
-// ------------------------- DATASETUP: ADD GIF OF PLAYER MOVING ----------------------------//
-
-
-
-
+![Player Moving](https://github.com/DarkDestry/Unity-GDG-Workshop/blob/master/Docs/Images/Chapter%203/PlayerMoving.gif?raw=true)
 
 
 You may have noticed that the player can move beyond the boundary of the game window. We would want to clamp the player's position to within the screen.
