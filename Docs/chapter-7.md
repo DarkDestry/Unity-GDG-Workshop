@@ -77,5 +77,62 @@ You can now leave the `Healthbar Icon` alone and adjust the fill slider of the `
 
 ![Final Healthbar](https://github.com/DarkDestry/Unity-GDG-Workshop/blob/master/Docs/Images/Chapter%207/FinalHealthbar.gif?raw=true)
 
-## Scripting Stuff
- /------------------- TODO ------------------------/
+## Storing a score for the game session
+
+We do not yet have a way to store the total score the player has attained. We will store this value in the `GameManager` as a private member because we want to encapsulate the value to prevent ourselves from changing the value arbitrarily.
+
+```csharp
+public class GameManager : MonoBehaviour
+{
+    private int m_Score = 0;
+    ...
+
+    public void AddScore(int amt)
+    {
+        m_Score += amt;
+    }
+
+    public int GetScore()
+    {
+        return m_Score;
+    }
+}
+```
+
+We want to increment the score when an asteroid is destroyed by the player. To do this, call `AddScore()` from `Enemy.Die()`. However, we also call `Enemy.Die()` when the asteriod collides with the player. We certainly don't want to add score then. Since a lot of code has already been written, we will add a new boolean property to `Enemy.Die()` with a default value.
+
+```csharp
+// change
+public void Die() {...}
+
+// to 
+public void Die(bool addScore = true) { ... }
+```
+
+Inside the `Die()` method,
+
+```csharp
+public void Die(bool addScore = true)
+{
+    ...
+
+    if (addScore)
+        GameManager.Instance.AddScore(100); // We will hard code this value for now
+}
+```
+
+And we will need to fix the call to `Die` inside `Enemy.OnTriggerEnter2D()`
+
+
+```csharp
+private void OnTriggerEnter2D(Collider2D other)
+{
+    if (other.tag == "Player")
+    {
+        Player.Instance.health.TakeDamage(10);
+        Die(false); // Make sure addScore = false when the asteriod dies because collides with player
+    }
+}
+```
+
+The score property should now be updated in the `GameManager`. We will now proceed to update the UI text accordingly.
