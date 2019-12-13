@@ -70,4 +70,20 @@ In the event that you want to apply the changes to the prefab itself, select the
 
 Navigate back to the scripts folder that you created and create a new script called `Bullet`. This will contain the code that move the bullet and destroy the bullet when it hits something.
 
-=================== TODO ======================
+Our bullet behaviour is very straightforward. We will set the velocity of the attached rigidbody once in `Start()` and the bullet will move at a constant speed. We will also destroy the bullet after a couple of seconds, when we know that the bullet will be outside of the camera's view and out of play. We will use an empirical value of `10s` for now, but may come back to adjust this later.
+
+```csharp
+public float m_Speed = 15;
+
+void Start()
+{
+    GetComponent<Rigidbody2D>().velocity = new Vector2(0, speed);
+    Destroy(this.gameObject, 10); // Self destruct after 10 seconds
+}
+```
+
+
+
+
+
+// ------------------------- DATASETUP: ADD GIF OF BULLET MOVING ----------------------------//
