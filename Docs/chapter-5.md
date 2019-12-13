@@ -81,13 +81,7 @@ void Start()
 
 The asteriod should now fall towards the bottom of the screen.
 
-
-
-
-
-// ------------------------- DATASETUP: ADD GIF OF ASTERIOD FALLING ----------------------------//
-
-
+![Asteroid Falling](https://github.com/DarkDestry/Unity-GDG-Workshop/blob/master/Docs/Images/Chapter%205/AsteroidFalling.gif?raw=true)
 
 
 
@@ -301,9 +295,17 @@ public class EnemySpawner : MonoBehaviour
 ```
 
 
+To have a variety of asteroids to spawn, we need to create more asteroids for the spawner to instantiate. To do this simply, drag the asteroid prefab into the scene, and change the sprite for the object. Drag the asteroid game object back into the prefab menu to create a new prefab.
 
-// ----------- DATASETUP: SETUP VARIOUS ASTERIOD PREFABS AND ASSIGN TO ENEMYSPAWNER COMPONENT ----------- //
+To change the sprite quicky, you can select the ball icon next to the sprite field and selecting a sprite from the window that pops up. You can close the select window after selecting a new sprite.
 
+
+![Quick Sprite Selection](https://github.com/DarkDestry/Unity-GDG-Workshop/blob/master/Docs/Images/Chapter%205/AsteroidsChangeSprite.png?raw=true)
+
+Repeat the steps for all 3 other sprites and you should have the following result in your prefabs folder
+
+
+![Asteroid Prefabs](https://github.com/DarkDestry/Unity-GDG-Workshop/blob/master/Docs/Images/Chapter%205/AsteroidPrefabs.png?raw=true)
 
 
 
