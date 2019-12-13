@@ -83,7 +83,7 @@ void Start()
 ```
 
 
-// ------------------------- DATASETUP: ADD GIF OF ONE BULLET MOVING ----------------------------//
+![Bullet Moving](https://github.com/DarkDestry/Unity-GDG-Workshop/blob/master/Docs/Images/Chapter%204/BulletMoving.gif?raw=true)
 
 
 
@@ -119,7 +119,7 @@ public class Player : MonoBehaviour
 
 Back in Unity, drag the bullet prefab into the newly created `Bullet Prefab` field in the player component.
 
-// ----------- DATASETUP: ADD OF IMAGE OF ASSIGNING BULLET PREFAB ON PLAYER COMPONENT ---------------- //
+![Attach Bullet Prefab](https://github.com/DarkDestry/Unity-GDG-Workshop/blob/master/Docs/Images/Chapter%204/AttachBulletPrefab.png?raw=true)
 
 Just like how we used the "Horizontal" and "Vertical" input axis to move the player, there is a similar "Fire1" input axis that is mapped to common "fire" buttons. We will use this to check if we should spawn bullets.
 
@@ -151,18 +151,7 @@ Instantiate(m_BulletPrefab, transform.position + new Vector2(0.27f, 0.0f), Quate
 
 If we run the game and press `left ctrl` on the keyboard, our player should now be rapid firing bullets. `left ctrl` is mapped to the `Fire1` axis by default.
 
-
-
-
-
-
-
-// ----------- DATASETUP: ADD GIF OF RAPID FIRE BULLETS ---------------- //
-
-
-
-
-
+![Player Firing Bullet](https://github.com/DarkDestry/Unity-GDG-Workshop/blob/master/Docs/Images/Chapter%204/PlayerFiringBullet.gif?raw=true)
 
 
 
@@ -207,8 +196,7 @@ Our bullets should now be firing only every `m_TimeBetweenShots` seconds.
 
 
 
-
-// ----------- DATASETUP: ADD GIF OF BULLETS FIRING CORRECTLY ---------------- //
+![Player Firing Bullet Correctly](https://github.com/DarkDestry/Unity-GDG-Workshop/blob/master/Docs/Images/Chapter%204/PlayerFiringBulletCorrectly.gif?raw=true)
 
 
 
