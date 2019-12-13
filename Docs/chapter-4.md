@@ -46,7 +46,7 @@ Select the bullet and set the `Is Trigger` property for the collider. Do the sam
 
 If you play the game now and try interacting with the bullet, you should notice that the bullet passes through the player ship. The bullet is not doing anything now as we have not scripted the bullet yet.
 
-![Is Trigger Collider](https://github.com/DarkDestry/Unity-GDG-Workshop/blob/master/Docs/Images/Chapter%204/ConstrainedRigidbody.gif?raw=true)
+![Is Trigger Collider](https://github.com/DarkDestry/Unity-GDG-Workshop/blob/master/Docs/Images/Chapter%204/TriggerCollider.gif?raw=true)
 
 ## Creating a prefab
 
