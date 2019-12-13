@@ -136,3 +136,99 @@ private void OnTriggerEnter2D(Collider2D other)
 ```
 
 The score property should now be updated in the `GameManager`. We will now proceed to update the UI text accordingly.
+
+## Updating the UI components dynamically
+
+Create a new script `UIManager.cs` and attach it to the `GameManager` object.
+
+In this script, we will grab references to the individual UI elements (health bar, score text) and update them in realtime with values from the game manager.
+
+We will first need to include `UnityEngine.UI` at the top of the file since Unity's UI classes are in their own namespace (packages, if you're from a Java background).
+
+```csharp
+using UnityEngine;
+using UnityEngine.UI;
+
+...
+```
+
+We will need to create reference to the health `Image` and the score `Text`.
+
+```csharp
+// UIManager Members
+public Text m_ScoreText;
+public Image m_HealthBar;
+```
+
+Assign the `Healthbar` and `Score` UI Objects that we created earlier into the fields in the inspector.
+
+In the `Update()` function, we will update 1) the healthbar's fill amount, and 2) the score's text.
+
+```csharp
+void Update()
+{
+    if (m_ScoreText != null)
+        m_ScoreText.text = GameManager.Instance.GetScore().ToString();
+
+    if (m_HealthBar != null)
+        m_HealthBar.fillAmount = Player.Instance.m_Health.GetPercentageHealth();
+}
+
+```
+
+Start playing the game and the UI should be updated as you play!
+
+Final code for UIManager should look something like this:
+
+
+```csharp
+using UnityEngine;
+using UnityEngine.UI;
+
+public class UIManager : MonoBehaviour
+{
+
+    public Text m_ScoreText;
+    public Image m_HealthBar;
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (m_ScoreText != null)
+            m_ScoreText.text = GameManager.Instance.GetScore().ToString();
+
+        if (healthBar)
+            m_HealthBar.fillAmount = Player.Instance.health.GetPercentageHealth();
+    }
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
