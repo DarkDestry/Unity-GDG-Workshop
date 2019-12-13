@@ -74,6 +74,105 @@ Your final explosion should look like this
 
 As this animation will be played whenever there is an explosion, create a prefab by dragging the explosion object into the prefabs folder.
 
-## Scripting stuff
+## Spawning explosions 
 
-====================TODO========================
+On one hand we could write code for spawning explosions with a position, rotation and scale in every script that requires spawning explosions (enemy, bullet, player, etc), it would be much easier if we had a function taht we can call to spawn an explosion with a random rotation/scale at some location.
+
+To do this, we will create a `GameManager` class, and attach this component to a new GameObject that we will also call "Game Manager".
+
+We will also follow the singleton pattern for the game manager as we know that there should only ever be one game manager.
+
+```csharp
+using UnityEngine;
+
+public class GameManager : MonoBehaviour
+{
+
+    public static GameManager Instance;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        if (Instance != null)
+            Destroy(Instance);
+
+        Instance = this;
+    }
+
+}
+
+```
+
+We will create a field for the explosion prefab and assign it accordingly in the inspector.
+
+```csharp
+public class GameManager : MonoBehaviour
+{
+    public GameObject m_ExplosionPrefab;
+
+    ...
+}
+
+```
+
+We will also create a function to spawn an explosion with a random rotation at a certain position. The explosion scale we will leave as a parameter in case different scripts require different sized explosions.
+
+
+```csharp
+public void SpawnExplosionAt(Vector2 position, float scale)
+{
+    GameObject explosion = Instantiate(m_ExplosionPrefab, position, Quaternion.identity);
+
+    // Rotate around z-axis by a random amount
+    explosion.transform.Rotate(new Vector3(0, 0, Random.Range(0, 360)));
+
+    // Scale the explosion by the input parameter, with a little bit of randomness
+    explosion.tranform.localScale = Vector2.one * scale * Random.Range(0.9f, 1.1f);
+
+    // Destroy the explosion after the animation has finished playing
+    Destroy(explosion, 5);
+}
+```
+
+There are currently 3 places where we might want to spawn an explosion.
+
+### Enemy.Die()
+
+```csharp
+public void Die()
+{
+    GameManager.Instance.SpawnExplosionAt(transform.position, 1);
+    Destroy(this.gameObject);
+}
+
+```
+
+### Bullet.OnTriggerEnter2D()
+
+
+```csharp
+private void OnTriggerEnter2D(Collider2D other)
+{
+    Enemy e = other.GetComponent<Enemy>();
+    if (e)
+    {
+        e.Die();
+        Destroy(this.gameObject);
+
+        // Spawn explosion
+        GameManager.Instance.SpawnExplosionAt(transform.position, 0.2f);
+    }
+}
+```
+
+### Player.Die()
+
+```csharp
+void Die()
+{
+    GameManager.Instance.SpawnExplosionAt(transform.position, 1.5f);
+    Destroy(gameObject);
+}
+```
+
+With all the `SpawnExplosionAt()` calls done, we should get explosions when our bullet hits an asteriod, when the asteriod is destroyed, and when the player is destroyed.
