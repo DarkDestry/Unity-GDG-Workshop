@@ -18,6 +18,8 @@ Select the bullet in the hierarchy, scroll to the bottom of the inspector and se
 
 ![Bullet Inspector](https://github.com/DarkDestry/Unity-GDG-Workshop/blob/master/Docs/Images/Chapter%204/BulletInspector.png?raw=true)
 
+Remember to set your gravity scale to 0 on your rigidbody to disable gravity for the object.
+
 ## Adding constraints
 
 At this point you can press play in the editor and try interacting with the bullet with your ship. You may notice some perculiar behaviour with both your ship and the bullet

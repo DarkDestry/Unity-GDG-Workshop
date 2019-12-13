@@ -22,6 +22,12 @@ To add these components, simply select the game object in the hierarchy, under t
 
 > There is no particular reason we used the box collider to approximate the player's collider. If you want, you can select the Circle Collider or the Polygon Collider to approximate the player collider.
 
+## Rigidbody settings
+
+Currently if you play the game in the editor, you should see the player falling. That is due to gravity being enabled for the player. To disable gravity, select the player object in the hierarchy and under the rigidbody settings in the inspector window, set the gravity scale to 0
+
+![Rigidbody Gravity Scale](https://github.com/DarkDestry/Unity-GDG-Workshop/blob/master/Docs/Images/Chapter%203/RigidbodyGravityScale.png?raw=true)
+
 ## Scripting the Player Movement
 
 In the `player` class, we will first handle player movement. Create the following public members:
@@ -91,16 +97,7 @@ void HandleMovement()
 
 The function `Rigidbody.MovePosition()` will move the player to the newly calculated position. The player will now be able to move in play mode.
 
-
-
-
-
-
-// ------------------------- DATASETUP: ADD GIF OF PLAYER MOVING ----------------------------//
-
-
-
-
+![Player Moving](https://github.com/DarkDestry/Unity-GDG-Workshop/blob/master/Docs/Images/Chapter%203/PlayerMoving.gif?raw=true)
 
 
 You may have noticed that the player can move beyond the boundary of the game window. We would want to clamp the player's position to within the screen.
